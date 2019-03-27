@@ -1,0 +1,55 @@
+package com.itheima.bos.dao.base.impl;
+
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.itheima.bos.dao.base.IBaseDao;
+
+public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
+	/**
+	 * 提取泛型实体类
+	 */
+	public Class<T> entityClass;
+	
+	public BaseDaoImpl(){
+		Class<T> clazz = (Class<T>) this.getClass();
+		ParameterizedType parameterizedType =  (ParameterizedType) clazz.getGenericSuperclass();
+		Type[] types = parameterizedType.getActualTypeArguments();
+		entityClass = (Class<T>) types[0];
+	}
+	
+	@Override
+	public void save(T entity) {
+		getHibernateTemplate().save(entity);
+		
+	}
+
+	@Override
+	public void delete(T entity) {
+		getHibernateTemplate().delete(entity);
+		
+	}
+
+	@Override
+	public void update(T entity) {
+		getHibernateTemplate().update(entity);
+	}
+
+	@Override
+	public T findById(Serializable id) {
+		T t = getHibernateTemplate().get(entityClass, id);
+		return t;
+	}
+
+	@Override
+	public List<T> findAll() {
+		//测试，也不懂行不行
+		return (List<T>) getHibernateTemplate().findByCriteria(DetachedCriteria.forClass(entityClass));
+	}
+
+}

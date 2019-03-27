@@ -1,0 +1,22 @@
+
+public class TestInstanceof {
+	
+	public static void main(String[] args) {
+		/**
+		 * 学习instanceof用法
+		 */
+		boolean flag = false;
+		A a = new B();
+		if(a instanceof Object) {
+			flag = true;
+		}
+		System.out.println("继承的A类的B类的一个对象是否是A类型呢？"+flag);
+		
+
+	}
+
+}
+
+class A{}
+
+class B extends A{}
