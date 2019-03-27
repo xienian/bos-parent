@@ -2,4 +2,6 @@ ssss
 kjlkkljk
 sss 
 my name is xienian.
-谢念2在没pull的情况下，修改了代码2。
+谢念2在没pull的情况下，修改了代码。
+这是谢念1中提交的代码1
+谢念2在没pull的情况下，修改了代码。
