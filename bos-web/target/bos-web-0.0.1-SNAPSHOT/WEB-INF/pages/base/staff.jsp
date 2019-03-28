@@ -82,9 +82,9 @@
 			staffIds.push(id);
 		}
 		//异步修改取派员后，回显数据
-		$.post(url,{"staffIds":staffIds},function(data){
-			$("#grid").datagrid("load",data);
-		});
+		$.post(url,{"staffIds":staffIds});
+	
+		$("#grid").datagrid("load");
 	}
 	//工具栏
 	var toolbar = [ {

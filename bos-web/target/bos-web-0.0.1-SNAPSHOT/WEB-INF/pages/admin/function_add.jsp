@@ -39,10 +39,20 @@
 <div data-options="region:'north'">
 	<div class="datagrid-toolbar">
 		<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true" >保存</a>
+		<script type="text/javascript">
+			$(function() {
+				$("#save").click(function () {
+					var v = $("#functionForm").form("validate");
+					if(v){
+						$("#functionForm").submit();
+					}
+				})
+			})
+		</script>
 	</div>
 </div>
 <div data-options="region:'center'">
-	<form id="functionForm" method="post">
+	<form id="functionForm" method="post" action="functionAction_add.action">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">功能权限信息</td>
@@ -79,7 +89,7 @@
 					<tr>
 						<td>父功能点</td>
 						<td>
-							<input name="parentFunction.id" class="easyui-combobox" data-options="valueField:'id',textField:'info',url:''"/>
+							<input name="parentFunction.id" class="easyui-combobox" data-options="valueField:'id',textField:'name',url:'functionAction_listajax.action'"/>
 						</td>
 					</tr>
 					<tr>

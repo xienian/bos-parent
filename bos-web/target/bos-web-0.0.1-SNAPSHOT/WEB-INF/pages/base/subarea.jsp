@@ -29,6 +29,8 @@
 <script
 src="${pageContext.request.contextPath }/js/jquery.ocupload-1.1.2.js"
 type="text/javascript"></script>
+<script src="${pageContext.request.contextPath }/js/highcharts/highcharts.js"></script>
+<script src="${pageContext.request.contextPath }/js/highcharts/modules/exporting.js"></script>
 <script type="text/javascript">
 	function doAdd(){
 		$('#addSubareaWindow').window("open");
@@ -89,6 +91,12 @@ type="text/javascript"></script>
 		text : '导出',
 		iconCls : 'icon-undo',
 		handler : doExport
+	},
+	{
+		id : 'button-showHighcharts',
+		text : '显示区域分区分布图',
+		iconCls : 'icon-search',
+		handler : doShowHighcharts
 	}];
 	// 定义列
 	var columns = [ [ {
@@ -224,6 +232,26 @@ type="text/javascript"></script>
 	function doDblClickRow(){
 		alert("双击表格数据...");
 	}
+	/*
+	功能：
+	1.显示分区关联的区域的比例；
+	*/
+	function doShowHighcharts(){
+		$("#showSubareaWindow").window("open");
+		//页面加载完成后，动态创建图表
+		$.post("subareaAction_findSubareasGroupByProvince.action",function(data){
+			$("#test").highcharts({
+				title: {
+		            text: '区域分区分布图'
+		        },
+		        series: [{
+		            type: 'pie',
+		            name: '区域分区分布图',
+		            data: data
+		        }]
+			});
+		});
+	}
 </script>	
 </head>
 <body class="easyui-layout" style="visibility:hidden;">
@@ -323,6 +351,12 @@ type="text/javascript"></script>
 					</tr>
 				</table>
 			</form>
+		</div>
+	</div>
+	<!-- 用于展示图表 -->
+	<div class="easyui-window" title="区域分区分布图" id="showSubareaWindow" 
+		collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
+		<div id="test"  split="false" border="false" >
 		</div>
 	</div>
 </body>

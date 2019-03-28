@@ -201,8 +201,22 @@
 	        height: 400,
 	        resizable:false
 	    });
+		/*
+		定区查询按钮中，“查询”事件
+		1.上传查询参数，定区id和取派员所属公司；
+		*/
 		$("#btn").click(function(){
-			alert("执行查询...");
+			var v = $("#searchForm").form('validate');
+			if(v){
+				var id = $("#searchid");
+			
+
+				var staff = $("#searchstation");
+				
+				$("#grid").datagrid("load",{"page":"1","rows":"10","id":id.val(),"staff.station":staff.val()});
+				$("#searchWindow").window('close');
+				
+			}
 		});
 		
 	});
@@ -344,11 +358,11 @@
 					</tr>
 					<tr>
 						<td>定区编码</td>
-						<td><input type="text" name="id" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" id="searchId" name="id" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>定区名称</td>
-						<td><input type="text" name="name" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text"  id="searchStation" name="name" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>选择取派员</td>
@@ -378,18 +392,18 @@
 	<!-- 查询定区 -->
 	<div class="easyui-window" title="查询定区窗口" id="searchWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 		<div style="overflow:auto;padding:5px;" border="false">
-			<form>
+			<form id="searchForm" action="decidedzoneAction_search.action" method="post">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
 						<td colspan="2">查询条件</td>
 					</tr>
 					<tr>
 						<td>定区编码</td>
-						<td><input type="text" name="id" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text"  id="searchid" name="id" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td>所属单位</td>
-						<td><input type="text" name="staff.station" class="easyui-validatebox" required="true"/></td>
+						<td><input type="text" id="searchstation" name="staff.station" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
 						<td colspan="2"><a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> </td>

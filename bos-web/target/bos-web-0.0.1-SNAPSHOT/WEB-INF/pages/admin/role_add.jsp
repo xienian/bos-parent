@@ -42,16 +42,19 @@
 					title : "t"
 				},
 				simpleData : {
-					enable : true
+					enable : true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: null
 				}
 			},
 			check : {
-				enable : true,
+				enable : true
 			}
 		};
 		
 		$.ajax({
-			url : '${pageContext.request.contextPath}/json/menu.json',
+			url : '${pageContext.request.contextPath}/functionAction_listajax.action',
 			type : 'POST',
 			dataType : 'text',
 			success : function(data) {
@@ -67,7 +70,27 @@
 		
 		// 点击保存
 		$('#save').click(function(){
-			location.href='${pageContext.request.contextPath}/page_admin_privilege.action';
+			/*
+			1.校验表单；
+			2.获取选中的树节点；
+			3.整理将要上传的参数和值；
+			4.提交表单保存；
+			*/
+			alert("保存");
+			var v = $("#roleForm").form("validate");
+			if(v){
+				alert("保存");
+				var treeObj = $.fn.zTree.getZTreeObj("functionTree");
+				var nodes = treeObj.getCheckedNodes(true);
+				var array = new Array();
+				for(i = 0; i<nodes.length; i++){
+					var id = nodes[i].id;
+					array.push(id);
+				}
+				var functionIds = array.join(",");
+				$("input[name='functionIds']").val(functionIds);
+				$("#roleForm").submit();
+			}
 		});
 	});
 </script>	
@@ -79,8 +102,9 @@
 			</div>
 		</div>
 		<div region="center" style="overflow:auto;padding:5px;" border="false">
-			<form id="roleForm" method="post">
+			<form id="roleForm" method="post" action="${pageContext.request.contextPath }/roleAction_add.action">
 				<table class="table-edit" width="80%" align="center">
+				
 					<tr class="title">
 						<td colspan="2">角色信息</td>
 					</tr>
@@ -103,6 +127,8 @@
 					<tr>
 						<td>授权</td>
 						<td>
+						<!-- 隐藏域：提交所有选中的权限的id -->
+						<input id="functionIds" type="hidden" name="functionIds"/>
 							<ul id="functionTree" class="ztree"></ul>
 						</td>
 					</tr>

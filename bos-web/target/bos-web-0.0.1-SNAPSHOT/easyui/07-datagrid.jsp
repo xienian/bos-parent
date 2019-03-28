@@ -39,7 +39,6 @@
 			</tr>
 		</tbody>
 		
-		
 	</table>
 	<!-- 方式三：使用easyUI提供的API创建datagrid -->
 	<table id="mytable"></table>
@@ -47,6 +46,21 @@
 		$(function(){
 			//页面加载完成后，创建数据表格datagrid
 			$("#mytable").datagrid({
+				toolbar: [{
+					iconCls: 'icon-edit',
+					handler: function(){
+						var json = [{
+							"total":"123",
+							"rows":[{"id":"001","name":"小丽","age":"100"}]
+						}];
+						var j = json[0];
+						$("#mytable").datagrid("loadData",j)
+						
+					}
+				},{
+					iconCls: 'icon-help',
+					handler: function(){alert('帮助按钮')}
+				}],
 				//定义标题行所有的列
 				columns:[[
 				          {title:'编号',field:'id',checkbox:true},
@@ -58,24 +72,12 @@
 				url:'${pageContext.request.contextPath }/json/datagrid_data.json',
 				rownumbers:true,
 				singleSelect:true,
-				//定义工具栏
-				toolbar:[
-				         {text:'添加',iconCls:'icon-add',
-				        	 //为按钮绑定单击事件
-				        	 handler:function(){
-				        	 	alert('add...');
-				         	 }
-				         },
-				         {text:'删除',iconCls:'icon-remove'},
-				         {text:'修改',iconCls:'icon-edit'},
-				         {text:'查询',iconCls:'icon-search'}
-				         ],
 				//显示分页条
 				pagination:true
 			});
 		});
-	</script>
 	
-	<hr>
+		
+	</script>
 </body>
 </html>
