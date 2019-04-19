@@ -22,6 +22,10 @@ import com.itheima.crm.ICustomerService;
 @Controller
 @Scope("prototype")
 public class DecidedzoneAction extends BaseAction<Decidedzone> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 299852397910279637L;
 	//需要关联的分区id
 	private String[] subareaid;
 	private List<Integer> customerIds;
