@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:58 +0800] "GET /bos/userAction_login.action HTTP/1.1" 200 4261 http-bio-8888-exec-2 4133
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:58 +0800] "GET /bos/css/style.css HTTP/1.1" 200 23492 http-bio-8888-exec-3 196
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:58 +0800] "GET /bos/css/style_grey.css HTTP/1.1" 200 7293 http-bio-8888-exec-6 64
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:58 +0800] "GET /bos/js/jquery-1.8.3.js HTTP/1.1" 200 267739 http-bio-8888-exec-2 140
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:58 +0800] "GET /bos/images/bg_grey.png HTTP/1.1" 200 5357 http-bio-8888-exec-6 34
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:58 +0800] "GET /bos/images/bg_login.jpg HTTP/1.1" 200 531270 http-bio-8888-exec-2 227
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:59 +0800] "GET /bos/validatecode.jsp HTTP/1.1" 200 1920 http-bio-8888-exec-10 593
+0:0:0:0:0:0:0:1 - - [13/Oct/2019:11:25:59 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8888-exec-10 0
