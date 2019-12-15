@@ -53,7 +53,7 @@ public class FunctionAction extends BaseAction<Function> {
 		 * 3.返回json格式数据；
 		 */
 		List<Function> list= service.findMenu();
-		this.java2Json(list, new String[] {"roles","children"});
+		this.java2Json(list, new String[] {"roles","children"});//https://blog.csdn.net/wangyang163wy/article/details/50088177.为了过滤掉不需要转为json的成员变量
 		
 		return NONE;
 		

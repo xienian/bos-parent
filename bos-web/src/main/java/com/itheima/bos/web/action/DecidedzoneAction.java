@@ -55,7 +55,7 @@ public class DecidedzoneAction extends BaseAction<Decidedzone> {
 	@Autowired
 	private IDecidedzoneService decidedzoneService;
 	
-	//调用发布的“customerService”
+	//调用发布的“customerService”,webservice技术
 	@Autowired
 	private ICustomerService proxy;
 	
