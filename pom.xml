@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <description>父工程</description>
-    <!-- 通过属性定义指定jar的版本 444    -->
+    <!-- 通过属性定义指定jar的版本 555    -->
 	<properties>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<hibernate.version>5.0.7.Final</hibernate.version>
