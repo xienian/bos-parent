@@ -20,7 +20,7 @@
 						http://cxf.apache.org/schemas/jaxws.xsd
 						">
 	<!-- 读取数据库配置信息 -->
-	<context:property-placeholder location="classpath:db.properties"/>
+	<context:property-placeholder location="classpath:/db.properties" ignore-unresolvable="true"/>
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="${jdbc.driverClass}"></property>

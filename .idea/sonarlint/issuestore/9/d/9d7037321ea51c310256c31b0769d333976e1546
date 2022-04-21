@@ -1,0 +1,9 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(Ó™€¸ÿÿÿÿÿ
+T
+java:S4719"9Replace charset name argument with StandardCharsets.UTF_8(ñÜÚÊıÿÿÿÿ
+]
+java:S5361"HReplace this call to "replaceAll()" by a call to the "replace()" method.(ıˆ
+K
+java:S1191"5Use classes from the Java API instead of Sun classes.(ëŞï®

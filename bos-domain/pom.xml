@@ -7,4 +7,7 @@
   </parent>
   <artifactId>bos-domain</artifactId>
   <description>子工程，存放实体类和映射文件</description>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 </project>

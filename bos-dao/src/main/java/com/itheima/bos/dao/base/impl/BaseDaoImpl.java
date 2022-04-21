@@ -69,14 +69,14 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
 	@Override
 	public void executeUpdate(String queryName, Object... objects) {
 		Session session = this.getSessionFactory().getCurrentSession();
-		Query query = session.getNamedQuery(queryName);
+		Query query = (Query) session.getNamedQuery(queryName);
 		int i=0;
 		
 		for (Object object : objects) {
-			query.setParameter(i++, object);
+			((org.hibernate.Query) query).setParameter(i++, object);
 		}
 		
-		query.executeUpdate();
+		((org.hibernate.Query) query).executeUpdate();
 		
 	}
 
